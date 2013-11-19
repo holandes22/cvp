@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Character Profile</title>
+    <link rel="stylesheet" href="libs/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="libs/css/bootstrap-theme.min.css"/>
+  </head>
+  <body>
+    <div id="emberRoot"></div>
+    <script type="text/x-handlebars" id="application">
+      {{#link-to 'characters'}}Character list{{/link-to}}
+      {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="characters">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <ul>
+            {{#each character in model}}
+              <li>{{#link-to 'character' character}}{{character.playerFullName}}{{/link-to}}</li>
+            {{/each}}
+            </ul>
+          </div>
+          <div class="col-md-9">
+            {{outlet}}
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" id="character">
+
+      <ul class="nav nav-tabs">
+        <li><a href="#profile" data-toggle="tab">Profile</a></li>
+        <li><a href="#technologies" data-toggle="tab">Technologies</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="profile">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Stats</h4>
+                  </div>
+                  <div class="panel-body">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 100%">
+                        <span>Health {{health}} / 100</span>
+                      </div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 80%">
+                        <span>Mana {{mana}} / 100</span>
+                      </div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 90%">
+                        <span>Geekiness {{geekiness}} / 100</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Skills</h4>
+                  </div>
+                  <div class="panel-body">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th>Skill name</th>
+                        <th>Rating</th>
+                      </tr>
+                      {{#each skill in skills}}
+                        <tr>
+                          <td>{{skill.name}}</td>
+                          <td>{{format-rating skill.rating}}</td>
+                        </tr>
+                      {{/each}}
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="technologies"></div>
+      </div>
+    </script>
+
+    <script src="libs/js/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="libs/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="libs/js/handlebars-1.0.0.js" type="text/javascript"></script>
+    <script src="libs/js/ember.js" type="text/javascript"></script>
+    <script src="libs/js/ember-data.js" type="text/javascript"></script>
+
+    <script src="app.js" type="text/javascript"></script>
+  </body>
+</html>
