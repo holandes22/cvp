@@ -40,8 +40,9 @@
       <div class="tab-content">
         <div class="tab-pane active" id="profile">
           <div class="container">
+            <div class="row"><br></div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <div class="panel panel-primary">
                   <div class="panel-heading">
                     <h4 class="panel-title">Stats</h4>
@@ -65,7 +66,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-5">
                 <div class="panel panel-primary">
                   <div class="panel-heading">
                     <h4 class="panel-title">Skills</h4>
@@ -87,9 +88,51 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Attributes</h4>
+                  </div>
+                  <div class="panel-body">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th>Skill name</th>
+                        <th>Level</th>
+                      </tr>
+                      {{#each attribute in attributes}}
+                        <tr>
+                          <td>{{attribute.name}}</td>
+                          <td>{{attribute.rating}}</td>
+                        </tr>
+                      {{/each}}
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
-        <div class="tab-pane" id="technologies"></div>
+        <div class="tab-pane" id="technologies">
+          <div class="container">
+            <div class="row"><br></div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Technologies</h4>
+                  </div>
+                  <div class="panel-body">
+                      {{#each technology in technologies}}
+                        <img {{bind-attr src=technology.icon}} class="img-thumbnail" {{bind-attr title=technology.name}}
+                        height="128" width="128">
+                      {{/each}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </script>
 
