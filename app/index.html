@@ -9,15 +9,44 @@
   <body>
     <div id="emberRoot"></div>
     <script type="text/x-handlebars" id="application">
-      {{#link-to 'characters'}}Character list{{/link-to}}
+      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand">CV Profile</a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li>{{#link-to 'characters'}}Characters{{/link-to}}</li>
+            <li>{{#link-to 'about'}}About{{/link-to}}</li>
+            <li class="divider-vertical"></li>
+          </ul>
+        </div>
+      </nav>
       {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="about">
+
+      <div class="container">
+        <div class="row">
+          <div class="jumbotron">
+            <h1>Hi there!</h1>
+            <p>
+              This is a simple app built with ember.js to show an overview of my professional details.
+              The data is currently fixture driven but I plan to build a backend with flask to provide a
+              REST API for it (just an adapter switch in the client)
+            </p>
+            <p>{{#link-to 'characters' class="btn btn-primary btn-lg" role="button"}}See Profiles{{/link-to}}</p>
+          </div>
+        </div>
+      </div>
     </script>
 
     <script type="text/x-handlebars" id="characters">
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <ul>
+            <legend>Characters</legend>
+            <ul class="nav nav-pills nav-stacked">
             {{#each character in model}}
               <li>{{#link-to 'character' character}}{{character.playerFullName}}{{/link-to}}</li>
             {{/each}}
@@ -31,6 +60,26 @@
     </script>
 
     <script type="text/x-handlebars" id="character">
+      <ol class="breadcrumb">
+        <li>Character sheet</li>
+      </ol>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="libs/img/profile2.jpg" class="img-rounded" width="174" height="155">
+              </div>
+              <div class="col-md-4">
+                <h3>{{avatarName}}</h3>
+                <h4>Level <span class="badge">{{level}}</span> programmer</h4>
+                <a {{bind-attr href=socialProfileURL}} target="_blank">{{playerFullName}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <ul class="nav nav-tabs">
         <li><a href="#profile" data-toggle="tab">Profile</a></li>
@@ -98,12 +147,12 @@
                     <table class="table table-bordered">
                       <tr>
                         <th>Skill name</th>
-                        <th>Level</th>
+                        <th>Level [0-5]</th>
                       </tr>
                       {{#each attribute in attributes}}
                         <tr>
                           <td>{{attribute.name}}</td>
-                          <td>{{attribute.rating}}</td>
+                          <td><span class="badge"> {{attribute.rating}}</td>
                         </tr>
                       {{/each}}
                     </table>

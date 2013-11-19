@@ -5,6 +5,7 @@ window.App = Ember.Application.create({
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Router.map(function() {
+    this.resource('about', { path: '/about' });
     this.resource('characters', function() {
         this.resource('character', { path: ':character_id'});
     });
@@ -28,6 +29,7 @@ Ember.Handlebars.helper('format-rating', function(rating) {
 App.Character = DS.Model.extend({
     avatarName: DS.attr('string'),
     playerFullName: DS.attr('string'),
+    socialProfileURL: DS.attr('string'),
     level: DS.attr('number'),
     health: DS.attr('number'),
     mana: DS.attr('number'),
@@ -83,12 +85,19 @@ App.Technology.FIXTURES = [
     { id: 17, name: 'linux', icon: 'libs/img/linux.jpg' },
     { id: 18, name: 'apache', icon: 'libs/img/apache.png' },
     { id: 19, name: 'celery', icon: 'libs/img/celery.png' },
-    { id: 20, name: 'flask', icon: 'libs/img/flask.png' },
+    { id: 20, name: 'openstack', icon: 'libs/img/openstack.png' },
 ];
 
 App.Attribute.FIXTURES = [
     { id: 1, name: 'Python tests', rating: 5, advanced: false },
     { id: 2, name: 'Javascript tests', rating: 1, advanced: false },
+    { id: 3, name: 'CI', rating: 3, advanced: false },
+    { id: 4, name: 'Source Control', rating: 3, advanced: false },
+    { id: 5, name: 'TDD', rating: 3, advanced: false },
+    { id: 6, name: 'Software Craftmanship', rating: 2, advanced: false },
+    { id: 7, name: 'Automate All The Things!', rating: 4, advanced: false },
+    { id: 8, name: 'Unix based Operating System admin', rating: 3, advanced: false },
+    { id: 9, name: 'Storage', rating: 3, advanced: false },
 ];
 
 function getIds(model){
@@ -104,6 +113,7 @@ App.Character.FIXTURES = [
         id: 1,
         avatarName: 'holandes22',
         playerFullName: 'Pablo Klijnjan',
+        socialProfileURL: 'https://coderwall.com/holandes22',
         level: 21,
         health: 100,
         mana: 80,
