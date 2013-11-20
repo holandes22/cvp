@@ -97,7 +97,9 @@ App.Attribute.FIXTURES = [
     { id: 6, name: 'Software Craftmanship', rating: 2, advanced: false },
     { id: 7, name: 'Automate All The Things!', rating: 4, advanced: false },
     { id: 8, name: 'Unix based Operating System admin', rating: 3, advanced: false },
-    { id: 9, name: 'Storage', rating: 3, advanced: false },
+    { id: 9, name: 'Enterprise level storage - host side', rating: 4, advanced: false },
+    { id: 10, name: 'Enterprise level storage ', rating: 3, advanced: false },
+    { id: 11, name: 'Design', rating: 0, advanced: false },
 ];
 
 function getIds(model){
