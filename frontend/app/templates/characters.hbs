@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <legend>Characters</legend>
+      <ul class="nav nav-pills nav-stacked">
+      {{#each character in model}}
+        <li>{{#link-to 'character' character}}{{character.playerFullName}}{{/link-to}}</li>
+      {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-9">
+      {{outlet}}
+    </div>
+  </div>
+</div>

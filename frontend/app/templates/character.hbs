@@ -1,0 +1,123 @@
+<ol class="breadcrumb">
+  <li>Character sheet</li>
+</ol>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <img {{bind-attr src=avatarIcon}} class="img-rounded" width="174" height="155">
+        </div>
+        <div class="col-md-4">
+          <h3>{{avatarName}}</h3>
+          <h4>Level <span class="badge">{{level}}</span> programmer</h4>
+          <a {{bind-attr href=socialProfileURL}} target="_blank">{{playerFullName}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul class="nav nav-tabs">
+  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+  <li><a href="#technologies" data-toggle="tab">Technologies</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="profile">
+    <div class="container">
+      <div class="row"><br></div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">Stats</h4>
+            </div>
+            <div class="panel-body">
+              <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar" style="width: {{unbound health}}%">
+                  <span>Health {{health}} / 100</span>
+                </div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {{unbound mana}}%">
+                  <span>Mana {{mana}} / 100</span>
+                </div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" style="width: {{unbound geekiness}}%">
+                  <span>Geekiness {{geekiness}} / 100</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">Skills</h4>
+            </div>
+            <div class="panel-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th>Skill name</th>
+                  <th>Rating</th>
+                </tr>
+                {{#each skill in skills}}
+                  <tr>
+                    <td>{{skill.name}}</td>
+                    <td>{{format-rating skill.rating}}</td>
+                  </tr>
+                {{/each}}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">Attributes</h4>
+            </div>
+            <div class="panel-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th>Skill name</th>
+                  <th>Level [0-5]</th>
+                </tr>
+                {{#each attribute in attributes}}
+                  <tr>
+                    <td>{{attribute.name}}</td>
+                    <td><span class="badge"> {{attribute.rating}}</td>
+                  </tr>
+                {{/each}}
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="technologies">
+    <div class="container">
+      <div class="row"><br></div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">Technologies</h4>
+            </div>
+            <div class="panel-body">
+                {{#each technology in technologies}}
+                  <img {{bind-attr src=technology.icon}} class="img-thumbnail" {{bind-attr title=technology.name}}
+                  height="128" width="128">
+                {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
